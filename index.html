@@ -6,20 +6,25 @@
   <title>sexplorativ</title>
   <style>
     :root {
-      --color-primary: #8B4FA9; /* Rich purple */
+      --color-primary: #8B4FA9; /* Night: Rich purple */
       --color-secondary: #E5822D; /* Warm orange */
       --color-accent: #D1A7E8; /* Light lavender */
       --color-neutral: #CFCFCF; /* Soft gray */
       --color-light: #FFFFFF; /* White */
     }
 
-    /* --- Global basics --- */
-    * {
-      box-sizing: border-box;
+    /* Day theme overrides */
+    body.day-theme {
+      --color-primary: #E5822D; /* Day: Bright orange */
+      --color-secondary: #8B4FA9; /* Accent purple */
+      --color-accent: #F5C079;  /* Pale orange‑lavender */
+      --color-light: #FFFFFF;
     }
 
-    html,
-    body {
+    /* ------------- Global basics ------------- */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
       margin: 0;
       padding: 0;
       font-family: "Helvetica Neue", Arial, sans-serif;
@@ -27,34 +32,25 @@
       background: var(--color-primary);
       color: var(--color-light);
       scroll-behavior: smooth;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    img { max-width: 100%; display: block; }
 
-    a {
-      color: var(--color-secondary);
-      text-decoration: none;
-    }
+    a { color: var(--color-secondary); text-decoration: none; }
 
-    /* --- Layout --- */
+    /* ------------- Layout ------------- */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: linear-gradient(
-        180deg,
-        rgba(139, 79, 169, 1) 0%,
-        rgba(139, 79, 169, 0.9) 60%,
-        rgba(139, 79, 169, 0) 100%
-      );
+      background: var(--color-primary);
       backdrop-filter: blur(6px);
       padding: 1rem 0 0.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
+      transition: background 0.3s ease;
     }
 
     #logo {
@@ -128,7 +124,7 @@
       margin-top: 4rem;
     }
 
-    /* --- Components --- */
+    /* ------------- Components ------------- */
     .round {
       border-radius: 50%;
       width: 180px;
@@ -151,32 +147,18 @@
       letter-spacing: 0.5px;
     }
 
-    .section-divider {
-      width: 90px;
-      height: 6px;
-      border-radius: 3px;
-      background: var(--color-accent);
-      margin: 2.5rem auto;
+    .separator {
+      border: 0;
+      height: 2px;
+      background: var(--color-neutral);
+      margin: 2.5rem 0;
+      opacity: 0.6;
     }
 
     h2 {
       margin: 0 0 0.5rem;
       font-size: 1.75rem;
       color: var(--color-secondary);
-    }
-
-    /* Handwriting‑style line */
-    .hand-line {
-      width: 100%;
-      height: 22px;
-      background-image: repeating-linear-gradient(
-        90deg,
-        transparent 0 8px,
-        var(--color-accent) 8px 10px,
-        transparent 10px 40px
-      );
-      opacity: 0.25;
-      margin: 3rem 0;
     }
 
     /* Accordion (Angebote) */
@@ -198,9 +180,7 @@
       position: relative;
     }
 
-    .accordion summary::-webkit-details-marker {
-      display: none;
-    }
+    .accordion summary::-webkit-details-marker { display: none; }
 
     .accordion[open] summary::after,
     .accordion summary::after {
@@ -227,8 +207,8 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
-    /* --- Language switch --- */
-    .language-toggle {
+    /* Floating action buttons */
+    .fab {
       position: fixed;
       bottom: 22px;
       right: 22px;
@@ -241,84 +221,99 @@
       font-size: 0.9rem;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+      margin-left: 0.5rem;
     }
 
-    /* Small screens */
-    @media (max-width: 600px) {
-      nav ul {
-        gap: 1rem;
-        font-size: 0.95rem;
-      }
+    #lang-btn { bottom: 80px; }
 
-      .hero h1 {
-        font-size: 1.6rem;
-      }
+    /* ------------- Responsive tweaks ------------- */
+    @media (max-width: 600px) {
+      nav ul { gap: 1rem; font-size: 0.95rem; }
+      .hero h1 { font-size: 1.6rem; }
+      #lang-btn { bottom: 76px; }
+      #theme-btn { bottom: 22px; }
     }
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header>
     <a id="logo" href="#home">
       <img src="/images/icon.png" alt="Logo" />
       <span id="site-title"></span>
     </a>
-
-    <nav>
-      <ul id="menu"></ul>
-    </nav>
+    <nav><ul id="menu"></ul></nav>
   </header>
 
-  <main id="content"><!-- dynamic --></main>
+  <!-- Main content container -->
+  <main id="content"><!-- JS will inject sections here --></main>
 
-  <button id="lang-btn" class="language-toggle" style="display: none;"></button>
+  <!-- Action buttons -->
+  <button id="lang-btn" class="fab" style="display:none;"></button>
+  <button id="theme-btn" class="fab">☀️</button>
 
-  <footer>
-    &copy; <span id="year"></span> sexplorativ.de
-  </footer>
+  <!-- Footer -->
+  <footer>&copy; <span id="year"></span> sexplorativ.de</footer>
 
+  <!-- App script -->
   <script>
     (async () => {
-      /* ---------- Load configuration ---------- */
+      /* ------------- Load configuration ------------- */
       const response = await fetch("config.json");
       const cfg = await response.json();
 
+      /* ------------- State ------------- */
       const state = {
         lang: cfg.translation.default,
+        theme: localStorage.getItem("theme") || "night",
       };
 
-      /* ---------- Helpers ---------- */
+      /* ------------- Helpers ------------- */
       const $ = (sel) => document.querySelector(sel);
       const setText = (el, obj) => (el.textContent = obj[state.lang]);
 
-      /* ---------- Static header build ---------- */
+      /* ------------- Theme init ------------- */
+      const themeBtn = $("#theme-btn");
+      if (state.theme === "day") {
+        document.body.classList.add("day-theme");
+        themeBtn.textContent = "🌙";
+      }
+
+      themeBtn.addEventListener("click", () => {
+        document.body.classList.toggle("day-theme");
+        const isDay = document.body.classList.contains("day-theme");
+        state.theme = isDay ? "day" : "night";
+        themeBtn.textContent = isDay ? "🌙" : "☀️";
+        localStorage.setItem("theme", state.theme);
+      });
+
+      /* ------------- Header build ------------- */
       setText($("#site-title"), cfg.site.title);
 
-      // Menu build
       const menuUL = $("#menu");
       cfg.site.menu.forEach((item) => {
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.href = `#${item.slug}`;
         a.textContent = item.label[state.lang];
-        a.setAttribute("data-slug", item.slug);
+        a.dataset.slug = item.slug;
         li.appendChild(a);
         menuUL.appendChild(li);
       });
 
-      /* ---------- Language toggle ---------- */
+      /* ------------- Language toggle ------------- */
       if (cfg.translation.enabled) {
-        const btn = $("#lang-btn");
-        btn.style.display = "block";
-        btn.textContent = state.lang.toUpperCase();
-
-        btn.addEventListener("click", () => {
+        const langBtn = $("#lang-btn");
+        langBtn.style.display = "block";
+        langBtn.textContent = state.lang.toUpperCase();
+        langBtn.addEventListener("click", () => {
           state.lang = state.lang === "de" ? "en" : "de";
-          btn.textContent = state.lang.toUpperCase();
+          langBtn.textContent = state.lang.toUpperCase();
           refreshUI();
         });
       }
 
-      /* ---------- Routing ---------- */
+      /* ------------- Routing ------------- */
       const routes = {
         home: renderHome,
         ueber: renderUeber,
@@ -335,11 +330,11 @@
         });
       }
 
-      window.addEventListener("popstate", () => {
+      window.addEventListener("hashchange", () => {
         navigate(window.location.hash.substring(1) || "home");
       });
 
-      /* ---------- Renderers ---------- */
+      /* ------------- Renderers ------------- */
       const contentRoot = $("#content");
 
       function renderHome() {
@@ -351,14 +346,14 @@
             <h3>${hero.title[state.lang]}</h3>
           </section>
 
-          <div class="section-divider"></div>
+          <hr class="separator" />
 
           <section>
             <h2>${values.headline[state.lang]}</h2>
             <p>${values.body[state.lang]}</p>
           </section>
 
-          <div class="hand-line" aria-hidden="true"></div>
+          <hr class="separator" />
 
           <section>
             <h2>${extra.headline[state.lang]}</h2>
@@ -417,7 +412,7 @@
         `;
       }
 
-      /* ---------- Refresh UI on language change ---------- */
+      /* ------------- UI refresh on language change ------------- */
       function refreshUI() {
         // Header texts
         setText($("#site-title"), cfg.site.title);
@@ -425,11 +420,11 @@
           a.textContent = cfg.site.menu[idx].label[state.lang];
         });
         document.title = cfg.site.title[state.lang];
-        // Re-render page
+        // Re-render current page
         navigate(window.location.hash.substring(1) || "home");
       }
 
-      /* ---------- Kickstart ---------- */
+      /* ------------- Kick‑start ------------- */
       $("#year").textContent = new Date().getFullYear();
       navigate(window.location.hash.substring(1) || "home");
     })();
