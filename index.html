@@ -13,22 +13,22 @@
       --color-light: #FFFFFF; /* White */
     }
 
-    /* Day theme overrides */
+    /* Day‑theme overrides */
     body.day-theme {
-      --color-primary: #E5822D; /* Day: Bright orange */
-      --color-secondary: #8B4FA9; /* Accent purple */
-      --color-accent: #F5C079;  /* Pale orange‑lavender */
+      --color-primary: #E5822D; /* Day background – orange */
+      --color-secondary: #8B4FA9; /* Links/pointers – purple */
+      --color-accent: #F3D6FD;  /* Light lavender‑orange tint */
       --color-light: #FFFFFF;
     }
 
-    /* ------------- Global basics ------------- */
+    /* ---------- Global ---------- */
     *, *::before, *::after { box-sizing: border-box; }
 
     html, body {
       margin: 0;
       padding: 0;
       font-family: "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.5;
+      line-height: 1.6;
       background: var(--color-primary);
       color: var(--color-light);
       scroll-behavior: smooth;
@@ -36,202 +36,70 @@
     }
 
     img { max-width: 100%; display: block; }
-
     a { color: var(--color-secondary); text-decoration: none; }
 
-    /* ------------- Layout ------------- */
+    /* ---------- Layout ---------- */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
       background: var(--color-primary);
       backdrop-filter: blur(6px);
-      padding: 1rem 0 0.5rem;
+      padding: 0.85rem 0 0.55rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       transition: background 0.3s ease;
     }
 
-    #logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.25rem;
-    }
+    #logo { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; text-align: center; }
+    #logo img { width: 56px; height: 56px; object-fit: contain; border-radius: 50%; background: var(--color-light); padding: 4px; }
+    #logo span { font-size: 1.5rem; font-weight: 700; letter-spacing: 0.04em; text-transform: lowercase; }
 
-    #logo img {
-      width: 64px;
-      height: 64px;
-      object-fit: contain;
-      border-radius: 50%;
-      background: var(--color-light);
-      padding: 4px;
-    }
+    nav ul { list-style: none; display: flex; gap: 1.8rem; margin: 0.4rem 0 0; padding: 0; font-size: 1.05rem; font-weight: 600; }
+    nav a { position: relative; padding-bottom: 4px; }
+    nav a::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 0; height: 2px; background: var(--color-secondary); transition: 0.3s ease; }
+    nav a:hover::after, nav a:focus::after, nav a[aria-current="page"]::after { left: 0; width: 100%; }
 
-    #logo span {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: lowercase;
-    }
+    main { max-width: 960px; margin: 0 auto; padding: 2.2rem 1rem 4rem; }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.8rem;
-      margin: 0.5rem 0 0;
-      padding: 0;
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
+    /* section reveal */
+    section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    section.reveal { opacity: 1; transform: translateY(0); }
 
-    nav a {
-      position: relative;
-      padding-bottom: 4px;
-    }
+    footer { background: var(--color-neutral); color: var(--color-primary); text-align: center; padding: 1.3rem 1rem; font-size: 0.9rem; margin-top: 4rem; }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: var(--color-secondary);
-      transition: 0.3s ease;
-    }
+    /* ---------- Components ---------- */
+    .round { border-radius: 50%; width: 170px; height: 170px; object-fit: cover; border: 5px solid var(--color-accent); box-shadow: 0 4px 12px rgba(0,0,0,.35); margin: 0 auto; }
+    .hero h1 { margin: 1rem 0 0.2rem; font-size: 1.9rem; color: var(--color-secondary); }
+    .hero h3 { margin: 0; font-weight: 400; letter-spacing: 0.5px; }
 
-    nav a:hover::after,
-    nav a:focus::after,
-    nav a[aria-current="page"]::after {
-      left: 0;
-      width: 100%;
-    }
+    .separator { border: 0; height: 2px; background: var(--color-neutral); margin: 2.3rem 0; opacity: 0.6; }
+    h2 { margin: 0 0 0.45rem; font-size: 1.65rem; color: var(--color-secondary); }
 
-    main {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 2.5rem 1rem 4rem;
-    }
-
-    footer {
-      background: var(--color-neutral);
-      color: var(--color-primary);
-      text-align: center;
-      padding: 1.2rem 1rem;
-      font-size: 0.9rem;
-      margin-top: 4rem;
-    }
-
-    /* ------------- Components ------------- */
-    .round {
-      border-radius: 50%;
-      width: 180px;
-      height: 180px;
-      object-fit: cover;
-      border: 6px solid var(--color-accent);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      margin: 1rem 0 0.25rem;
-      font-size: 2rem;
-      color: var(--color-secondary);
-    }
-
-    .hero h3 {
-      margin: 0;
-      font-weight: 400;
-      letter-spacing: 0.5px;
-    }
-
-    .separator {
-      border: 0;
-      height: 2px;
-      background: var(--color-neutral);
-      margin: 2.5rem 0;
-      opacity: 0.6;
-    }
-
-    h2 {
-      margin: 0 0 0.5rem;
-      font-size: 1.75rem;
-      color: var(--color-secondary);
-    }
-
-    /* Accordion (Angebote) */
-    .accordion {
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 1.2rem;
-      backdrop-filter: blur(2px);
-    }
-
-    .accordion summary {
-      cursor: pointer;
-      font-weight: 600;
-      background: var(--color-accent);
-      color: var(--color-primary);
-      padding: 1rem 1.25rem;
-      list-style: none;
-      position: relative;
-    }
-
+    /* Accordion */
+    .accordion { border: 1px solid rgba(255,255,255,.3); border-radius: 10px; overflow: hidden; margin-bottom: 1.1rem; backdrop-filter: blur(2px); }
+    .accordion summary { cursor: pointer; font-weight: 600; background: var(--color-accent); color: var(--color-primary); padding: 0.9rem 1.2rem; list-style: none; position: relative; }
     .accordion summary::-webkit-details-marker { display: none; }
+    .accordion[open] summary::after, .accordion summary::after { content: "▸"; font-size: 1.1rem; position: absolute; right: 1.1rem; transform-origin: center; transition: transform .25s ease; }
+    .accordion[open] summary::after { transform: rotate(90deg); }
+    .accordion .content { padding: 1rem 1.2rem 1.4rem; background: rgba(255,255,255,.08); }
+    .accordion .content img { border-radius: 12px; margin-bottom: 0.7rem; box-shadow: 0 4px 12px rgba(0,0,0,.3); }
 
-    .accordion[open] summary::after,
-    .accordion summary::after {
-      content: "▸";
-      font-size: 1.1rem;
-      position: absolute;
-      right: 1.2rem;
-      transform-origin: center;
-      transition: transform 0.25s ease;
-    }
-
-    .accordion[open] summary::after {
-      transform: rotate(90deg);
-    }
-
-    .accordion .content {
-      padding: 1rem 1.25rem 1.5rem;
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .accordion .content img {
-      border-radius: 12px;
-      margin-bottom: 0.75rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Floating action buttons */
-    .fab {
-      position: fixed;
-      bottom: 22px;
-      right: 22px;
-      background: var(--color-secondary);
-      border: none;
-      border-radius: 26px;
-      padding: 0.55rem 1.1rem;
-      color: var(--color-light);
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-      margin-left: 0.5rem;
-    }
-
+    /* FABs */
+    .fab { position: fixed; right: 22px; background: var(--color-secondary); border: none; border-radius: 26px; padding: 0.55rem 1.1rem; color: var(--color-light); font-weight: 700; font-size: 0.9rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,.35); }
+    #theme-btn { bottom: 22px; }
     #lang-btn { bottom: 80px; }
+    #top-btn { bottom: 138px; display: none; }
 
-    /* ------------- Responsive tweaks ------------- */
+    /* ---------- Mobile tweaks ---------- */
     @media (max-width: 600px) {
+      nav a[data-slug="home"] { display: none; } /* hide Start link when logo is visible */
       nav ul { gap: 1rem; font-size: 0.95rem; }
-      .hero h1 { font-size: 1.6rem; }
+      .hero h1 { font-size: 1.55rem; }
+      .round { width: 150px; height: 150px; }
       #lang-btn { bottom: 76px; }
-      #theme-btn { bottom: 22px; }
+      #top-btn { bottom: 130px; }
     }
   </style>
 </head>
@@ -245,12 +113,13 @@
     <nav><ul id="menu"></ul></nav>
   </header>
 
-  <!-- Main content container -->
-  <main id="content"><!-- JS will inject sections here --></main>
+  <!-- Main content container (dynamic) -->
+  <main id="content"></main>
 
   <!-- Action buttons -->
+  <button id="top-btn" class="fab" aria-label="Back to top">↑</button>
   <button id="lang-btn" class="fab" style="display:none;"></button>
-  <button id="theme-btn" class="fab">☀️</button>
+  <button id="theme-btn" class="fab" aria-label="Toggle theme">☀️</button>
 
   <!-- Footer -->
   <footer>&copy; <span id="year"></span> sexplorativ.de</footer>
@@ -258,40 +127,42 @@
   <!-- App script -->
   <script>
     (async () => {
-      /* ------------- Load configuration ------------- */
-      const response = await fetch("config.json");
-      const cfg = await response.json();
+      /* ---------- Load configuration ---------- */
+      const cfg = await fetch("config.json").then(r => r.json());
 
-      /* ------------- State ------------- */
+      /* ---------- State ---------- */
       const state = {
         lang: cfg.translation.default,
-        theme: localStorage.getItem("theme") || "night",
+        theme: localStorage.getItem("theme") || "night"
       };
 
-      /* ------------- Helpers ------------- */
-      const $ = (sel) => document.querySelector(sel);
-      const setText = (el, obj) => (el.textContent = obj[state.lang]);
+      /* ---------- Shortcuts ---------- */
+      const $ = sel => document.querySelector(sel);
+      const setText = (el, obj) => el && (el.textContent = obj[state.lang]);
 
-      /* ------------- Theme init ------------- */
+      /* ---------- Theme ---------- */
       const themeBtn = $("#theme-btn");
-      if (state.theme === "day") {
-        document.body.classList.add("day-theme");
-        themeBtn.textContent = "🌙";
-      }
-
-      themeBtn.addEventListener("click", () => {
-        document.body.classList.toggle("day-theme");
-        const isDay = document.body.classList.contains("day-theme");
-        state.theme = isDay ? "day" : "night";
-        themeBtn.textContent = isDay ? "🌙" : "☀️";
+      const applyTheme = () => {
+        if (state.theme === "day") {
+          document.body.classList.add("day-theme");
+          themeBtn.textContent = "🌙";
+        } else {
+          document.body.classList.remove("day-theme");
+          themeBtn.textContent = "☀️";
+        }
         localStorage.setItem("theme", state.theme);
+      };
+      applyTheme();
+      themeBtn.addEventListener("click", () => {
+        state.theme = state.theme === "day" ? "night" : "day";
+        applyTheme();
       });
 
-      /* ------------- Header build ------------- */
+      /* ---------- Header ---------- */
       setText($("#site-title"), cfg.site.title);
 
       const menuUL = $("#menu");
-      cfg.site.menu.forEach((item) => {
+      cfg.site.menu.forEach(item => {
         const li = document.createElement("li");
         const a = document.createElement("a");
         a.href = `#${item.slug}`;
@@ -301,7 +172,7 @@
         menuUL.appendChild(li);
       });
 
-      /* ------------- Language toggle ------------- */
+      /* ---------- Language toggle ---------- */
       if (cfg.translation.enabled) {
         const langBtn = $("#lang-btn");
         langBtn.style.display = "block";
@@ -313,30 +184,38 @@
         });
       }
 
-      /* ------------- Routing ------------- */
+      /* ---------- Back to top ---------- */
+      const topBtn = $("#top-btn");
+      topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+      window.addEventListener("scroll", () => {
+        topBtn.style.display = window.scrollY > 400 ? "block" : "none";
+      });
+
+      /* ---------- Routing ---------- */
       const routes = {
         home: renderHome,
         ueber: renderUeber,
         angebote: renderAngebote,
         kontakt: renderKontakt,
-        blog: renderBlog,
+        blog: renderBlog
       };
 
       function navigate(slug) {
-        routes[slug] ? routes[slug]() : routes.home();
-        document.querySelectorAll("nav a").forEach((a) => {
-          a.removeAttribute("aria-current");
-          if (a.dataset.slug === slug) a.setAttribute("aria-current", "page");
+        (routes[slug] || routes.home)();
+        document.querySelectorAll("nav a").forEach(a => {
+          a.toggleAttribute("aria-current", a.dataset.slug === slug);
         });
       }
+      window.addEventListener("hashchange", () => navigate(location.hash.slice(1) || "home"));
 
-      window.addEventListener("hashchange", () => {
-        navigate(window.location.hash.substring(1) || "home");
-      });
+      /* ---------- Intersection reveal ---------- */
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => e.isIntersecting && e.target.classList.add("reveal"));
+      }, { threshold: 0.15 });
 
-      /* ------------- Renderers ------------- */
       const contentRoot = $("#content");
 
+      /* ---------- Page renderers ---------- */
       function renderHome() {
         const { hero, values, extra } = cfg.pages.home;
         contentRoot.innerHTML = `
@@ -345,21 +224,17 @@
             <h1>${hero.name[state.lang]}</h1>
             <h3>${hero.title[state.lang]}</h3>
           </section>
-
           <hr class="separator" />
-
           <section>
             <h2>${values.headline[state.lang]}</h2>
             <p>${values.body[state.lang]}</p>
           </section>
-
           <hr class="separator" />
-
           <section>
             <h2>${extra.headline[state.lang]}</h2>
             <p>${extra.body[state.lang]}</p>
-          </section>
-        `;
+          </section>`;
+        revealSections();
       }
 
       function renderUeber() {
@@ -368,65 +243,48 @@
           <section style="text-align:center">
             <img src="${photo}" class="round" alt="Über mich" />
             <p style="max-width:600px;margin:1rem auto 0">${text[state.lang]}</p>
-          </section>
-        `;
+          </section>`;
+        revealSections();
       }
 
       function renderAngebote() {
         const { topText, sections, bottomText } = cfg.pages.angebote;
         let html = `<section><p>${topText[state.lang]}</p></section>`;
-
-        sections.forEach((sec) => {
-          html += `
-            <details class="accordion">
-              <summary>${sec.title[state.lang]}</summary>
-              <div class="content">
-                ${sec.image ? `<img src="${sec.image}" alt="${sec.title[state.lang]}">` : ""}
-                <p>${sec.body[state.lang]}</p>
-              </div>
-            </details>
-          `;
+        sections.forEach(sec => {
+          html += `<details class="accordion"><summary>${sec.title[state.lang]}</summary><div class="content">${sec.image ? `<img src="${sec.image}" alt="">` : ""}<p>${sec.body[state.lang]}</p></div></details>`;
         });
-
         html += `<section><p>${bottomText[state.lang]}</p></section>`;
         contentRoot.innerHTML = html;
+        revealSections();
       }
 
       function renderKontakt() {
         const { headline, body } = cfg.pages.kontakt;
-        contentRoot.innerHTML = `
-          <section style="text-align:center">
-            <h2>${headline[state.lang]}</h2>
-            <p>${body[state.lang]}</p>
-          </section>
-        `;
+        contentRoot.innerHTML = `<section style="text-align:center"><h2>${headline[state.lang]}</h2><p>${body[state.lang]}</p></section>`;
+        revealSections();
       }
 
       function renderBlog() {
         const { comingSoon } = cfg.pages.blog;
-        contentRoot.innerHTML = `
-          <section style="text-align:center">
-            <h2>Blog</h2>
-            <p>${comingSoon[state.lang]}</p>
-          </section>
-        `;
+        contentRoot.innerHTML = `<section style="text-align:center"><h2>Blog</h2><p>${comingSoon[state.lang]}</p></section>`;
+        revealSections();
       }
 
-      /* ------------- UI refresh on language change ------------- */
+      function revealSections() {
+        contentRoot.querySelectorAll("section").forEach(sec => io.observe(sec));
+      }
+
+      /* ---------- Language refresh ---------- */
       function refreshUI() {
-        // Header texts
         setText($("#site-title"), cfg.site.title);
-        document.querySelectorAll("nav a").forEach((a, idx) => {
-          a.textContent = cfg.site.menu[idx].label[state.lang];
-        });
+        document.querySelectorAll("nav a").forEach((a, i) => a.textContent = cfg.site.menu[i].label[state.lang]);
         document.title = cfg.site.title[state.lang];
-        // Re-render current page
-        navigate(window.location.hash.substring(1) || "home");
+        navigate(location.hash.slice(1) || "home");
       }
 
-      /* ------------- Kick‑start ------------- */
+      /* ---------- Kick‑off ---------- */
       $("#year").textContent = new Date().getFullYear();
-      navigate(window.location.hash.substring(1) || "home");
+      navigate(location.hash.slice(1) || "home");
     })();
   </script>
 </body>
