@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sexplorativ</title>
+  <style>
+    :root {
+      --color-primary: #8B4FA9; /* Rich purple */
+      --color-secondary: #E5822D; /* Warm orange */
+      --color-accent: #D1A7E8; /* Light lavender */
+      --color-neutral: #CFCFCF; /* Soft gray */
+      --color-light: #FFFFFF; /* White */
+    }
+
+    /* --- Global basics --- */
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+      background: var(--color-primary);
+      color: var(--color-light);
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: var(--color-secondary);
+      text-decoration: none;
+    }
+
+    /* --- Layout --- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: linear-gradient(
+        180deg,
+        rgba(139, 79, 169, 1) 0%,
+        rgba(139, 79, 169, 0.9) 60%,
+        rgba(139, 79, 169, 0) 100%
+      );
+      backdrop-filter: blur(6px);
+      padding: 1rem 0 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    #logo img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: var(--color-light);
+      padding: 4px;
+    }
+
+    #logo span {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: lowercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.8rem;
+      margin: 0.5rem 0 0;
+      padding: 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--color-secondary);
+      transition: 0.3s ease;
+    }
+
+    nav a:hover::after,
+    nav a:focus::after,
+    nav a[aria-current="page"]::after {
+      left: 0;
+      width: 100%;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem 4rem;
+    }
+
+    footer {
+      background: var(--color-neutral);
+      color: var(--color-primary);
+      text-align: center;
+      padding: 1.2rem 1rem;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+
+    /* --- Components --- */
+    .round {
+      border-radius: 50%;
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border: 6px solid var(--color-accent);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      margin: 1rem 0 0.25rem;
+      font-size: 2rem;
+      color: var(--color-secondary);
+    }
+
+    .hero h3 {
+      margin: 0;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .section-divider {
+      width: 90px;
+      height: 6px;
+      border-radius: 3px;
+      background: var(--color-accent);
+      margin: 2.5rem auto;
+    }
+
+    h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.75rem;
+      color: var(--color-secondary);
+    }
+
+    /* Handwriting‑style line */
+    .hand-line {
+      width: 100%;
+      height: 22px;
+      background-image: repeating-linear-gradient(
+        90deg,
+        transparent 0 8px,
+        var(--color-accent) 8px 10px,
+        transparent 10px 40px
+      );
+      opacity: 0.25;
+      margin: 3rem 0;
+    }
+
+    /* Accordion (Angebote) */
+    .accordion {
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 1.2rem;
+      backdrop-filter: blur(2px);
+    }
+
+    .accordion summary {
+      cursor: pointer;
+      font-weight: 600;
+      background: var(--color-accent);
+      color: var(--color-primary);
+      padding: 1rem 1.25rem;
+      list-style: none;
+      position: relative;
+    }
+
+    .accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .accordion[open] summary::after,
+    .accordion summary::after {
+      content: "▸";
+      font-size: 1.1rem;
+      position: absolute;
+      right: 1.2rem;
+      transform-origin: center;
+      transition: transform 0.25s ease;
+    }
+
+    .accordion[open] summary::after {
+      transform: rotate(90deg);
+    }
+
+    .accordion .content {
+      padding: 1rem 1.25rem 1.5rem;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .accordion .content img {
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* --- Language switch --- */
+    .language-toggle {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      background: var(--color-secondary);
+      border: none;
+      border-radius: 26px;
+      padding: 0.55rem 1.1rem;
+      color: var(--color-light);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Small screens */
+    @media (max-width: 600px) {
+      nav ul {
+        gap: 1rem;
+        font-size: 0.95rem;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a id="logo" href="#home">
+      <img src="/images/icon.png" alt="Logo" />
+      <span id="site-title"></span>
+    </a>
+
+    <nav>
+      <ul id="menu"></ul>
+    </nav>
+  </header>
+
+  <main id="content"><!-- dynamic --></main>
+
+  <button id="lang-btn" class="language-toggle" style="display: none;"></button>
+
+  <footer>
+    &copy; <span id="year"></span> sexplorativ.de
+  </footer>
+
+  <script>
+    (async () => {
+      /* ---------- Load configuration ---------- */
+      const response = await fetch("config.json");
+      const cfg = await response.json();
+
+      const state = {
+        lang: cfg.translation.default,
+      };
+
+      /* ---------- Helpers ---------- */
+      const $ = (sel) => document.querySelector(sel);
+      const setText = (el, obj) => (el.textContent = obj[state.lang]);
+
+      /* ---------- Static header build ---------- */
+      setText($("#site-title"), cfg.site.title);
+
+      // Menu build
+      const menuUL = $("#menu");
+      cfg.site.menu.forEach((item) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = `#${item.slug}`;
+        a.textContent = item.label[state.lang];
+        a.setAttribute("data-slug", item.slug);
+        li.appendChild(a);
+        menuUL.appendChild(li);
+      });
+
+      /* ---------- Language toggle ---------- */
+      if (cfg.translation.enabled) {
+        const btn = $("#lang-btn");
+        btn.style.display = "block";
+        btn.textContent = state.lang.toUpperCase();
+
+        btn.addEventListener("click", () => {
+          state.lang = state.lang === "de" ? "en" : "de";
+          btn.textContent = state.lang.toUpperCase();
+          refreshUI();
+        });
+      }
+
+      /* ---------- Routing ---------- */
+      const routes = {
+        home: renderHome,
+        ueber: renderUeber,
+        angebote: renderAngebote,
+        kontakt: renderKontakt,
+        blog: renderBlog,
+      };
+
+      function navigate(slug) {
+        routes[slug] ? routes[slug]() : routes.home();
+        document.querySelectorAll("nav a").forEach((a) => {
+          a.removeAttribute("aria-current");
+          if (a.dataset.slug === slug) a.setAttribute("aria-current", "page");
+        });
+      }
+
+      window.addEventListener("popstate", () => {
+        navigate(window.location.hash.substring(1) || "home");
+      });
+
+      /* ---------- Renderers ---------- */
+      const contentRoot = $("#content");
+
+      function renderHome() {
+        const { hero, values, extra } = cfg.pages.home;
+        contentRoot.innerHTML = `
+          <section class="hero" style="text-align:center">
+            <img src="${hero.image}" class="round" alt="${hero.name[state.lang]}" />
+            <h1>${hero.name[state.lang]}</h1>
+            <h3>${hero.title[state.lang]}</h3>
+          </section>
+
+          <div class="section-divider"></div>
+
+          <section>
+            <h2>${values.headline[state.lang]}</h2>
+            <p>${values.body[state.lang]}</p>
+          </section>
+
+          <div class="hand-line" aria-hidden="true"></div>
+
+          <section>
+            <h2>${extra.headline[state.lang]}</h2>
+            <p>${extra.body[state.lang]}</p>
+          </section>
+        `;
+      }
+
+      function renderUeber() {
+        const { photo, text } = cfg.pages.ueber;
+        contentRoot.innerHTML = `
+          <section style="text-align:center">
+            <img src="${photo}" class="round" alt="Über mich" />
+            <p style="max-width:600px;margin:1rem auto 0">${text[state.lang]}</p>
+          </section>
+        `;
+      }
+
+      function renderAngebote() {
+        const { topText, sections, bottomText } = cfg.pages.angebote;
+        let html = `<section><p>${topText[state.lang]}</p></section>`;
+
+        sections.forEach((sec) => {
+          html += `
+            <details class="accordion">
+              <summary>${sec.title[state.lang]}</summary>
+              <div class="content">
+                ${sec.image ? `<img src="${sec.image}" alt="${sec.title[state.lang]}">` : ""}
+                <p>${sec.body[state.lang]}</p>
+              </div>
+            </details>
+          `;
+        });
+
+        html += `<section><p>${bottomText[state.lang]}</p></section>`;
+        contentRoot.innerHTML = html;
+      }
+
+      function renderKontakt() {
+        const { headline, body } = cfg.pages.kontakt;
+        contentRoot.innerHTML = `
+          <section style="text-align:center">
+            <h2>${headline[state.lang]}</h2>
+            <p>${body[state.lang]}</p>
+          </section>
+        `;
+      }
+
+      function renderBlog() {
+        const { comingSoon } = cfg.pages.blog;
+        contentRoot.innerHTML = `
+          <section style="text-align:center">
+            <h2>Blog</h2>
+            <p>${comingSoon[state.lang]}</p>
+          </section>
+        `;
+      }
+
+      /* ---------- Refresh UI on language change ---------- */
+      function refreshUI() {
+        // Header texts
+        setText($("#site-title"), cfg.site.title);
+        document.querySelectorAll("nav a").forEach((a, idx) => {
+          a.textContent = cfg.site.menu[idx].label[state.lang];
+        });
+        document.title = cfg.site.title[state.lang];
+        // Re-render page
+        navigate(window.location.hash.substring(1) || "home");
+      }
+
+      /* ---------- Kickstart ---------- */
+      $("#year").textContent = new Date().getFullYear();
+      navigate(window.location.hash.substring(1) || "home");
+    })();
+  </script>
+</body>
+</html>

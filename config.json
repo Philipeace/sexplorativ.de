@@ -1,0 +1,130 @@
+{
+  "translation": {
+    "enabled": true,
+    "default": "de",
+    "supported": ["de", "en"]
+  },
+  "site": {
+    "title": {
+      "de": "sexplorativ",
+      "en": "sexplorativ"
+    },
+    "menu": [
+      {
+        "slug": "home",
+        "label": {"de": "Start", "en": "Home"}
+      },
+      {
+        "slug": "ueber",
+        "label": {"de": "Über mich", "en": "About me"}
+      },
+      {
+        "slug": "angebote",
+        "label": {"de": "Angebote", "en": "Services"}
+      },
+      {
+        "slug": "kontakt",
+        "label": {"de": "Kontakt", "en": "Contact"}
+      },
+      {
+        "slug": "blog",
+        "label": {"de": "Blog", "en": "Blog"}
+      }
+    ]
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "image": "/images/profile-photo.png",
+        "name": {"de": "Maxi Musterfrau", "en": "Maxi Examplewoman"},
+        "title": {"de": "Sexualpädagogin (isp)", "en": "Sexual Pedagogue (isp)"}
+      },
+      "values": {
+        "headline": {"de": "Meine Werte", "en": "My Values"},
+        "body": {
+          "de": "Respekt, Offenheit und Empathie stehen im Zentrum meiner Arbeit. Ich schaffe sichere Räume für ehrliche Gespräche.",
+          "en": "Respect, openness and empathy are at the heart of my work. I create safe spaces for honest conversations."
+        }
+      },
+      "extra": {
+        "headline": {"de": "Aktuelles Projekt", "en": "Current Project"},
+        "body": {
+          "de": "Derzeit entwickle ich ein interaktives Workshop‑Format für Jugendliche zum Thema Consent.",
+          "en": "I am currently developing an interactive workshop format on consent for young people."
+        }
+      }
+    },
+    "ueber": {
+      "photo": "/images/profile-about.png",
+      "text": {
+        "de": "Ich bin Maxi Musterfrau, Sexualpädagogin mit über 10 Jahren Erfahrung in Präventionsarbeit, Beratung und Gruppenangeboten.",
+        "en": "I'm Maxi Examplewoman, a sexual pedagogue with 10+ years of experience in prevention work, counselling and group offers."
+      }
+    },
+    "angebote": {
+      "topText": {
+        "de": "Mein Angebot richtet sich an Schulen, Jugendeinrichtungen und Einzelpersonen.",
+        "en": "My services are aimed at schools, youth institutions and individuals."
+      },
+      "sections": [
+        {
+          "title": {"de": "Workshops", "en": "Workshops"},
+          "image": "/images/workshops.png",
+          "body": {
+            "de": "Interaktive Workshops zu Themen wie Aufklärung, Consent und Körperwahrnehmung.",
+            "en": "Interactive workshops on topics such as sexual education, consent and body perception."
+          }
+        },
+        {
+          "title": {"de": "Präventionsarbeit", "en": "Prevention"},
+          "image": "/images/prevention.png",
+          "body": {
+            "de": "Programme zur Prävention sexualisierter Gewalt in Schulen und Einrichtungen.",
+            "en": "Programs for the prevention of sexualized violence in schools and institutions."
+          }
+        },
+        {
+          "title": {"de": "Beratung", "en": "Counselling"},
+          "image": "/images/counselling.png",
+          "body": {
+            "de": "Einzel- und Paarberatung in geschütztem Rahmen.",
+            "en": "Individual and couple counselling in a protected setting."
+          }
+        },
+        {
+          "title": {"de": "Gruppenangebote", "en": "Group offers"},
+          "image": "/images/groups.png",
+          "body": {
+            "de": "Prozessbegleitete Gruppenformate für verschiedene Zielgruppen.",
+            "en": "Process-accompanied group formats for different target groups."
+          }
+        },
+        {
+          "title": {"de": "Gesprächskreise", "en": "Discussion circles"},
+          "image": "/images/discussions.png",
+          "body": {
+            "de": "Moderierte Gesprächskreise zu vielfältigen Beziehungsthemen.",
+            "en": "Moderated discussion circles on diverse relationship topics."
+          }
+        }
+      ],
+      "bottomText": {
+        "de": "Gerne entwickle ich auch ein individuelles Angebot für Ihre Bedürfnisse.",
+        "en": "I’m happy to develop a customised offer for your needs."
+      }
+    },
+    "kontakt": {
+      "headline": {"de": "Kontakt", "en": "Contact"},
+      "body": {
+        "de": "Maxi Musterfrau · Musterstraße 1 · 12345 Berlin · E‑Mail: mail@sexplorativ.de · Tel: +49 30 12345678",
+        "en": "Maxi Examplewoman · Example Street 1 · 12345 Berlin · Email: mail@sexplorativ.de · Phone: +49 30 12345678"
+      }
+    },
+    "blog": {
+      "comingSoon": {
+        "de": "Der Blog befindet sich noch im Aufbau. Schauen Sie bald wieder vorbei!",
+        "en": "The blog is under construction. Check back soon!"
+      }
+    }
+  }
+}
