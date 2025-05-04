@@ -36,7 +36,7 @@
     "home": {
       "hero": {
         "image": "/images/profile-photo.png",
-        "name": {"de": "Maxi Musterfrau", "en": "Maxi Examplewoman"},
+        "name": {"de": "Tara Musterfrau", "en": "Maxi Examplewoman"},
         "title": {"de": "Sexualpädagogin (isp)", "en": "Sexual Pedagogue (isp)"}
       },
       "values": {
