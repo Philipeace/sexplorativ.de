@@ -58,7 +58,7 @@
       "photo": "/images/profile-about.png",
       "text": {
         "de": "Ich bin Tara Musterfrau, Sexualpädagogin mit über 10 Jahren Erfahrung in Präventionsarbeit, Beratung und Gruppenangeboten.",
-        "en": "I'm Maxi Examplewoman, a sexual pedagogue with 10+ years of experience in prevention work, counselling and group offers."
+        "en": "I'm Tara Examplewoman, a sexual pedagogue with 10+ years of experience in prevention work, counselling and group offers."
       }
     },
     "angebote": {
@@ -71,7 +71,7 @@
           "title": {"de": "Workshops", "en": "Workshops"},
           "image": "/images/workshops.png",
           "body": {
-            "de": "Interaktive Workshops zu Themen wie Aufklärung, Consent und Körperwahrnehmung.",
+            "de": "Interaktive Workshops zu Themen wie Aufklärung, Konsens und Körperwahrnehmung.",
             "en": "Interactive workshops on topics such as sexual education, consent and body perception."
           }
         },
@@ -87,7 +87,7 @@
           "title": {"de": "Beratung", "en": "Counselling"},
           "image": "/images/counselling.png",
           "body": {
-            "de": "Einzel- und Paarberatung in geschütztem Rahmen.",
+            "de": "Einzel- und Elternberatung in geschütztem Rahmen.",
             "en": "Individual and couple counselling in a protected setting."
           }
         },
@@ -103,7 +103,7 @@
           "title": {"de": "Gesprächskreise", "en": "Discussion circles"},
           "image": "/images/discussions.png",
           "body": {
-            "de": "Moderierte Gesprächskreise zu vielfältigen Beziehungsthemen.",
+            "de": "Moderierte Gesprächskreise zu vielfältigen Themen rund um Sexualität, Körper und Beziehungen.",
             "en": "Moderated discussion circles on diverse relationship topics."
           }
         }
@@ -116,8 +116,8 @@
     "kontakt": {
       "headline": {"de": "Kontakt", "en": "Contact"},
       "body": {
-        "de": "Maxi Musterfrau · Musterstraße 1 · 12345 Berlin · E‑Mail: mail@sexplorativ.de · Tel: +49 30 12345678",
-        "en": "Maxi Examplewoman · Example Street 1 · 12345 Berlin · Email: mail@sexplorativ.de · Phone: +49 30 12345678"
+        "de": "Tara Musterfrau · Musterstraße 1 · 12345 Dortmund · E‑Mail: mail@sexplorativ.de · Tel: +49 30 12345678",
+        "en": "Tara Examplewoman · Example Street 1 · 12345 Dortmund · Email: mail@sexplorativ.de · Phone: +49 30 12345678"
       }
     },
     "blog": {
