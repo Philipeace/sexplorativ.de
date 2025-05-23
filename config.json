@@ -36,7 +36,7 @@
     "home": {
       "hero": {
         "image": "/images/profile-photo.png",
-        "name": {"de": "Tara Musterfrau", "en": "Maxi Examplewoman"},
+        "name": {"de": "Tara Musterfrau", "en": "Tara Examplewoman"},
         "title": {"de": "Sexualpädagogin (isp)", "en": "Sexual Pedagogue (isp)"}
       },
       "values": {
@@ -47,7 +47,7 @@
         }
       },
       "extra": {
-        "headline": {"de": "Aktuelles Projekt", "en": "Current Project"},
+        "headline": {"de": "Aktuelle Projekte", "en": "Current Project"},
         "body": {
           "de": "Derzeit entwickle ich ein interaktives Workshop‑Format für Jugendliche zum Thema Consent.",
           "en": "I am currently developing an interactive workshop format on consent for young people."
