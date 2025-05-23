@@ -2,7 +2,10 @@
   "translation": {
     "enabled": true,
     "default": "de",
-    "supported": ["de", "en"]
+    "supported": [
+      "de",
+      "en"
+    ]
   },
   "site": {
     "title": {
@@ -12,23 +15,38 @@
     "menu": [
       {
         "slug": "home",
-        "label": {"de": "Start", "en": "Home"}
+        "label": {
+          "de": "Start",
+          "en": "Home"
+        }
       },
       {
         "slug": "ueber",
-        "label": {"de": "Über mich", "en": "About me"}
+        "label": {
+          "de": "Über mich",
+          "en": "About me"
+        }
       },
       {
         "slug": "angebote",
-        "label": {"de": "Angebote", "en": "Services"}
+        "label": {
+          "de": "Angebote",
+          "en": "Services"
+        }
       },
       {
         "slug": "kontakt",
-        "label": {"de": "Kontakt", "en": "Contact"}
+        "label": {
+          "de": "Kontakt",
+          "en": "Contact"
+        }
       },
       {
         "slug": "blog",
-        "label": {"de": "Blog", "en": "Blog"}
+        "label": {
+          "de": "Blog",
+          "en": "Blog"
+        }
       }
     ]
   },
@@ -36,18 +54,30 @@
     "home": {
       "hero": {
         "image": "/images/profile-photo.png",
-        "name": {"de": "Tara Siemer", "en": "Tara Siemer"},
-        "title": {"de": "Sexualpädagogin (isp)", "en": "Sexual Pedagogue (isp)"}
+        "name": {
+          "de": "Tara Siemer",
+          "en": "Tara Siemer"
+        },
+        "title": {
+          "de": "Sexualpädagogin (isp)",
+          "en": "Sexual Pedagogue (isp)"
+        }
       },
       "values": {
-        "headline": {"de": "Meine Werte", "en": "My Values"},
+        "headline": {
+          "de": "Meine Werte",
+          "en": "My Values"
+        },
         "body": {
           "de": "Respekt, Offenheit und Empathie stehen im Zentrum meiner Arbeit. Ich schaffe sichere Räume für ehrliche Gespräche.",
           "en": "Respect, openness and empathy are at the heart of my work. I create safe spaces for honest conversations."
         }
       },
       "extra": {
-        "headline": {"de": "Aktuelle Projekte", "en": "Current Project"},
+        "headline": {
+          "de": "Aktuelle Projekte",
+          "en": "Current Project"
+        },
         "body": {
           "de": "Derzeit entwickle ich ein interaktives Workshop‑Format für Jugendliche zum Thema Consent.",
           "en": "I am currently developing an interactive workshop format on consent for young people."
@@ -57,10 +87,8 @@
     "ueber": {
       "photo": "/images/profile-about.png",
       "text": {
-        "de": "Hallo, Ich bin Tara, Sexualpädagogin und Soziologin aus Leidenschaft. Am Wochenende findet man mich meist auf Flohmärkten, ich kann stundenlang mit meinen Freund*innen zusammensitzen und quatschen und würde gerne von mir behaupten, dass auch Stricken oder Nähen zu meinen Hobbys zählt – in der Realität komme ich aber praktisch nie dazu.
-        Im Laufe meines Erwachsenwerdens habe ich mehr und mehr gemerkt, dass es vorne und hinten an Aufklärung mangelt – Aufklärung über Körper, Aufklärung über Sexualität, Aufklärung über Beziehungsformen, eigentlich über alles. Das möchte ich nun ändern! Komm mit mir auf diese Reise!",
-        "en": "Hello, I'm Tara, a passionate sex educator and sociologist. On weekends, you can usually find me at flea markets. I can sit and chat with my friends for hours, and I'd love to say that knitting or sewing are among my hobbies — but in reality, I practically never get around to it.
-        As I've grown up, I've become more and more aware of the lack of education — body education, sex education, education on relationships, basically anything. I want to change that! Come on this journey with me!"
+        "de": "Hallo, Ich bin Tara, Sexualpädagogin und Soziologin aus Leidenschaft. Am Wochenende findet man mich meist auf Flohmärkten, ich kann stundenlang mit meinen Freund*innen zusammensitzen und quatschen und würde gerne von mir behaupten, dass auch Stricken oder Nähen zu meinen Hobbys zählt – in der Realität komme ich aber praktisch nie dazu.\n        Im Laufe meines Erwachsenwerdens habe ich mehr und mehr gemerkt, dass es vorne und hinten an Aufklärung mangelt – Aufklärung über Körper, Aufklärung über Sexualität, Aufklärung über Beziehungsformen, eigentlich über alles. Das möchte ich nun ändern! Komm mit mir auf diese Reise!",
+        "en": "Hello, I'm Tara, a passionate sex educator and sociologist. On weekends, you can usually find me at flea markets. I can sit and chat with my friends for hours, and I'd love to say that knitting or sewing are among my hobbies — but in reality, I practically never get around to it.\n        As I've grown up, I've become more and more aware of the lack of education — body education, sex education, education on relationships, basically anything. I want to change that! Come on this journey with me!"
       }
     },
     "angebote": {
@@ -70,7 +98,10 @@
       },
       "sections": [
         {
-          "title": {"de": "Workshops", "en": "Workshops"},
+          "title": {
+            "de": "Workshops",
+            "en": "Workshops"
+          },
           "image": "/images/workshops.png",
           "body": {
             "de": "Interaktive Workshops zu Themen wie Aufklärung, Konsens und Körperwahrnehmung.",
@@ -78,7 +109,10 @@
           }
         },
         {
-          "title": {"de": "Präventionsarbeit", "en": "Prevention"},
+          "title": {
+            "de": "Präventionsarbeit",
+            "en": "Prevention"
+          },
           "image": "/images/prevention.png",
           "body": {
             "de": "Aufklärung ist Prävention! Doch manchmal darf oder muss es etwas expliziter werden, um sich oder andere vor sexueller oder sexualisierter Gewalt zu schützen. Gemeinsam können wir auf eure individuellen Bedürfnisse schauen.",
@@ -86,7 +120,10 @@
           }
         },
         {
-          "title": {"de": "Beratung", "en": "Counselling"},
+          "title": {
+            "de": "Beratung",
+            "en": "Counselling"
+          },
           "image": "/images/counselling.png",
           "body": {
             "de": "Einzel- und Elternberatung in geschütztem Rahmen.",
@@ -94,7 +131,10 @@
           }
         },
         {
-          "title": {"de": "Gruppenangebote", "en": "Group offers"},
+          "title": {
+            "de": "Gruppenangebote",
+            "en": "Group offers"
+          },
           "image": "/images/groups.png",
           "body": {
             "de": "Prozessbegleitete Gruppenformate für verschiedene Zielgruppen.",
@@ -102,7 +142,10 @@
           }
         },
         {
-          "title": {"de": "Gesprächskreise", "en": "Discussion circles"},
+          "title": {
+            "de": "Gesprächskreise",
+            "en": "Discussion circles"
+          },
           "image": "/images/discussions.png",
           "body": {
             "de": "Moderierte Gesprächskreise zu vielfältigen Themen rund um Sexualität, Körper und Beziehungen.",
@@ -116,7 +159,10 @@
       }
     },
     "kontakt": {
-      "headline": {"de": "Kontakt", "en": "Contact"},
+      "headline": {
+        "de": "Kontakt",
+        "en": "Contact"
+      },
       "body": {
         "de": "Tara Musterfrau · Musterstraße 1 · 12345 Dortmund · E‑Mail: mail@sexplorativ.de · Tel: +49 30 12345678",
         "en": "Tara Examplewoman · Example Street 1 · 12345 Dortmund · Email: mail@sexplorativ.de · Phone: +49 30 12345678"
