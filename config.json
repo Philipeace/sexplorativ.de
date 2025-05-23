@@ -36,7 +36,7 @@
     "home": {
       "hero": {
         "image": "/images/profile-photo.png",
-        "name": {"de": "Tara Musterfrau", "en": "Tara Examplewoman"},
+        "name": {"de": "Tara Siemer", "en": "Tara Examplewoman"},
         "title": {"de": "Sexualpädagogin (isp)", "en": "Sexual Pedagogue (isp)"}
       },
       "values": {
@@ -57,7 +57,7 @@
     "ueber": {
       "photo": "/images/profile-about.png",
       "text": {
-        "de": "Ich bin Tara Musterfrau, Sexualpädagogin mit über 10 Jahren Erfahrung in Präventionsarbeit, Beratung und Gruppenangeboten.",
+        "de": "Ich bin Tara Musterfrau, Sexualpädagogin mit Jahren Erfahrung in Präventionsarbeit, Beratung und Gruppenangeboten.",
         "en": "I'm Tara Examplewoman, a sexual pedagogue with 10+ years of experience in prevention work, counselling and group offers."
       }
     },
