@@ -40,7 +40,7 @@
           "de": "Kontakt",
           "en": "Contact"
         }
-      },
+      },.
       {
         "slug": "blog",
         "label": {
@@ -146,7 +146,7 @@
             "de": "Gesprächskreise",
             "en": "Discussion circles"
           },
-          "image": ,
+          "image": "/images/discussions.png",
           "body": {
             "de": "Moderierte Gesprächskreise zu vielfältigen Themen rund um Sexualität, Körper und Beziehungen.",
             "en": "Moderated discussion circles on topics related to sexuality, bodies and relationships."
